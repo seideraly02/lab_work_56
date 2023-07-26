@@ -1,0 +1,36 @@
+@model List<TaskItem>
+
+<h2>To-Do List</h2>
+
+<p>
+    <a asp-action="Create">Добавить новую задачу</a>
+</p>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Заголовок</th>
+        <th>Приоритет</th>
+        <th>Статус</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var task in Model)
+    {
+        <tr>
+            <td>@task.Title</td>
+            <td>@task.Priority</td>
+            <td>@(task.IsOpen ? "Открыта" : "Закрыта")</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@task.Id">Подробнее</a> |
+                <a asp-action="Delete" asp-route-id="@task.Id">Удалить</a> |
+                @if (task.IsOpen)
+                {
+                    <a asp-action="Close" asp-route-id="@task.Id">Закрыть</a>
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

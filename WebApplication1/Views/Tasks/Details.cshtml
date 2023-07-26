@@ -1,0 +1,13 @@
+@model TaskItem
+
+<h2>Детали задачи</h2>
+
+<div>
+    <h4>Заголовок: @Model.Title</h4>
+    <p>Описание: @Model.Description</p>
+    <p>Приоритет: @Model.Priority</p>
+    <p>Статус: @(Model.IsOpen ? "Открыта" : "Закрыта")</p>
+</div>
+<p>
+    <a asp-action="Index">Назад к списку задач</a>
+</p>
